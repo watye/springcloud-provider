@@ -1,7 +1,5 @@
 package com.talelife.myproject.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,44 +10,43 @@ import com.talelife.myproject.model.User;
 import com.talelife.myproject.service.UserService;
 import com.talelife.myproject.service.UserService.UserQuery;
 import com.talelife.util.Page;
+import com.talelife.util.Result;
 
 import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/user")
-public class UserController extends BaseController{
+public class UserController extends BaseController {
 	@Resource
 	private UserService userService;
-	
-	@RequestMapping("/all")
-    public List<User> all() {
-        return userService.findAll();
-    }
-	
-	@ApiOperation(value="获取用户列表", notes="")
-	@RequestMapping(value="/page",method=RequestMethod.GET)
-    public Page<User> page() {
+
+	@ApiOperation(value = "获取用户列表")
+	@RequestMapping(value = "/page", method = RequestMethod.GET)
+	public Result<Page<User>> page() {
 		UserQuery query = new UserQuery();
 		query.setPageNum(2);
 		query.setPageSize(1);
-        return userService.findPage(query);
-    }
+		return Result.success(userService.findPage(query));
+	}
+
+	@RequestMapping("/get_user")
+	public Result<User> getUser(Long id) {
+		return Result.success(userService.findByPK(id));
+	}
 
 	@RequestMapping("/add")
-    public void add() {
+	public Result<Object> add() {
 		User user = new User();
 		user.setAge(11);
 		user.setUsername("李1");
-        userService.add(user);
-    }
-	
+		userService.add(user);
+		return Result.success();
+	}
+
 	@RequestMapping("/delete")
-    public void delete(long id) {
-        userService.delete(id);
-    }
-	
-	
-	
-	
-	
+	public Result<Object> delete(long id) {
+		userService.delete(id);
+		return Result.success();
+	}
+
 }

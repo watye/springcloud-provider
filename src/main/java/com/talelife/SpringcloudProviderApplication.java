@@ -11,7 +11,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @MapperScan("com.talelife.myproject.mapper")
 @EnableSwagger2
-//@EnableDiscoveryClient
 @EnableEurekaClient
 public class SpringcloudProviderApplication {
 

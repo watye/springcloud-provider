@@ -1,45 +1,64 @@
 package com.talelife.util;
 
-public class Result{
+public final class Result<T> {
 	private boolean success = false;
 	private String message;
-	private Object data;
-	
-	private Result(){}
+	private String code;
+	private T data;
 
-	public static Result success(){
-		Result rs = new Result();
+	private Result() {
+	}
+
+	private static <T> Result<T> getInstance() {
+		return new Result<>();
+	}
+
+	public static <T> Result<T> success() {
+		Result<T> rs = getInstance();
 		rs.setSuccess(true);
 		return rs;
 	}
-	
-	public static Result success(String data){
-		Result rs = new Result();
+
+	public static <T> Result<T> success(String code) {
+		Result<T> rs = getInstance();
 		rs.setSuccess(true);
-		rs.setData(data);
+		rs.setCode(code);
 		return rs;
 	}
-	
-	public static Result success(Object data){
-		Result rs = new Result();
-		if(data instanceof String) {
-			rs.setMessage((String)data);
-		}
-		rs.setSuccess(true);
-		rs.setData(data);
-		return rs;
-	}
-	
-	public static Result fail(){
-		Result rs = new Result();
+
+	public static <T> Result<T> fail() {
+		Result<T> rs = getInstance();
 		rs.setSuccess(false);
 		return rs;
 	}
-	
-	public static Result fail(String msg){
-		Result rs = new Result();
+
+	public static <T> Result<T> fail(String code) {
+		Result<T> rs = getInstance();
 		rs.setSuccess(false);
+		rs.setCode(code);
+		return rs;
+	}
+
+	public static <T> Result<T> fail(String code, String msg) {
+		Result<T> rs = getInstance();
+		rs.setSuccess(false);
+		rs.setCode(code);
 		rs.setMessage(msg);
+		return rs;
+	}
+
+	public static <T> Result<T> success(T data) {
+		Result<T> rs = getInstance();
+		rs.setSuccess(true);
+		rs.setData(data);
+		return rs;
+	}
+
+	public static <T> Result<T> success(String code, T data) {
+		Result<T> rs = getInstance();
+		rs.setSuccess(true);
+		rs.setCode(code);
+		rs.setData(data);
 		return rs;
 	}
 
@@ -59,12 +78,20 @@ public class Result{
 		this.message = message;
 	}
 
-	public Object getData() {
+	public T getData() {
 		return data;
 	}
 
-	public void setData(Object data) {
+	public void setData(T data) {
 		this.data = data;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 }

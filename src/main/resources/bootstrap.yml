@@ -1,0 +1,56 @@
+server:
+  port: 8085
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  #spring数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/myproject?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    #指定数据连接沲
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: 172.31.118.23
+    password: 123456
+    port: 6379
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 20
+    instance-id: 172.31.118.72:${server.port}
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+---
+spring:
+  profiles: prd
+  #spring数据源配置
+  datasource:
+    url: jdbc:mysql://98.126.8.203:3306/zoy_trade?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: DB_zoy_trade
+    password: 261525
+    driver-class-name: com.mysql.jdbc.Driver
+    #指定数据连接沲
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: 172.31.118.23
+    password: 123456
+    port: 6379
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 20
+    instance-id: 172.31.118.72:${server.port}
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
