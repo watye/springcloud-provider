@@ -39,6 +39,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- 健康监控 ，默认只能查看/actuator/health信息-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<!-- 分页插件 -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
@@ -98,10 +103,17 @@
             <artifactId>spring-cloud-starter-feign</artifactId>
             <version>1.4.4.RELEASE</version>
         </dependency>
+        <!-- 配置中心客户端 -->
         <dependency>
 		    <groupId>org.springframework.cloud</groupId>
 		    <artifactId>spring-cloud-config-client</artifactId>
 		</dependency>
+		<!-- 接口包 -->
+		<!-- <dependency>
+			 <groupId>com.talelife</groupId>
+			 <artifactId>springcloud-provider-feign</artifactId>
+			 <version>0.0.1-SNAPSHOT</version>
+		</dependency> -->
 	</dependencies>
 	
 	

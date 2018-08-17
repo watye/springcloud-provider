@@ -21,11 +21,11 @@ eureka:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 20
-    instance-id: 172.31.118.91:${server.port}
+    instance-id: www.talelife.com:${server.port}
   client:
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://www.talelife.com:8761/eureka
 ---
 spring:
   profiles: prd

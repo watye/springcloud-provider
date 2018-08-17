@@ -40,3 +40,18 @@ v1.8 mybatis整合redis缓存
     <!-- 可读写的缓存会返回缓存对象的拷贝（通过序列化）。这会慢一些，但是安全，因此默认是false -->
     <property name="readOnly" value="false" />
 </cache>
+
+v2.02 添加客户端调用例子(本例子仅作为开发参考：在同一项目中引入不可用，因为url-mapping相同)
+1）引入接口包依赖
+<dependency>
+	 <groupId>com.talelife</groupId>
+	 <artifactId>springcloud-provider-feign</artifactId>
+	 <version>0.0.1-SNAPSHOT</version>
+</dependency>
+
+2）启用类添加接口包扫描
+@EnableFeignClients(basePackages = {"com.talelife.myproject.feign"})
+
+3）注入接口调用
+@Autowired
+private UserWebService userWebService;
