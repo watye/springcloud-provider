@@ -18,10 +18,10 @@ import junit.framework.TestCase;
 @SpringBootTest
 public class RedisSuperTest{
 	
-	@Autowired  
+	//@Autowired  
     private RedisSuper redis;  
       
-    @Test  
+    //@Test  
     public void testSetAndGet(){  
     	String name = "lwy";
     	redis.setRedisStringValue("name",name);
