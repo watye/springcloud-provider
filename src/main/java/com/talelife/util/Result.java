@@ -1,9 +1,19 @@
 package com.talelife.util;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public final class Result<T> {
+	
+	@ApiModelProperty(value = "是否成功")
 	private boolean success = false;
+	
+	@ApiModelProperty(value = "错误信息")
 	private String message;
+	
+	@ApiModelProperty(value = "错误编号")
 	private String code;
+	
+	@ApiModelProperty(value = "返回对象")
 	private T data;
 
 	private Result() {

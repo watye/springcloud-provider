@@ -3,54 +3,61 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import com.talelife.myproject.dto.UserQuery;
+import com.talelife.myproject.mapper.CurdMapper;
 import com.talelife.myproject.mapper.UserMapper;
 import com.talelife.myproject.model.User;
 import com.talelife.myproject.service.UserService;
-import com.talelife.util.BusinessException;
 import com.talelife.util.Page;
 /**
  * 用户业务实现类
- * date: 2017-08-17 17:54:46
+ * date: 2018-09-27 17:46:40
  * 
  * @author Liuweiyao
  * @version 1.0
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl extends GenericServiceImpl<User, UserQuery,CurdMapper<User,UserQuery>>  implements UserService{
 	
 	@Autowired
 	private UserMapper userMapper;
-	
-	public List<User> findAll(){
-		return userMapper.findAll();
+
+	@Override
+	public int add(User t) {
+		return super.add(userMapper, t);
 	}
-	
-	public List<User> findList(User user){
-		return userMapper.findList(user);
+
+	@Override
+	public int delete(Long id) {
+		return super.delete(userMapper, id);
 	}
-	
-	public Page<User> findPage(UserQuery query) {
-		return new Page<User>(userMapper.findPage(query));
+
+	@Override
+	public int update(User t) {
+		return super.update(userMapper, t);
 	}
-	
-	@Transactional
-	public int add(User user){
-		return userMapper.add(user);
+
+	@Override
+	public User findByPK(Long id) {
+		return super.findByPK(userMapper, id);
 	}
-	
-	public int delete(Long id){
-		return userMapper.delete(id);
+
+	@Override
+	public List<User> findAll() {
+		return super.findAll(userMapper);
 	}
-	
-	public int update(User user){
-		return userMapper.update(user);
+
+	@Override
+	public List<User> findList(UserQuery s) {
+		return super.findList(userMapper, s);
 	}
-	
-	public User findByPK(Long id){
-		return userMapper.findByPK(id);
+
+	@Override
+	public Page<User> findPage(UserQuery s) {
+		return super.findPage(userMapper, s);
 	}
+
 	
 	
 	

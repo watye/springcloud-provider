@@ -29,10 +29,9 @@ public class Swagger2 {
 	
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("springboot利用swagger构建api文档")
-				.description("简单优雅的restfun风格，http://www.talelife.com")
+				.title("springcloud-provider项目接口文档")
 				.termsOfServiceUrl("http://www.talelife.com")
-				.version("1.0")
+				.version("v1.0")
 				.build();
 	}
 }

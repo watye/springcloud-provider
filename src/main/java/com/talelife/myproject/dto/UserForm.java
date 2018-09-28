@@ -1,33 +1,26 @@
-package com.talelife.myproject.model;
+package com.talelife.myproject.dto;
 import java.io.Serializable;
+
+import io.swagger.annotations.ApiModelProperty;
 /**
- * 用户实体类
- * date: 2017-08-17 17:54:46
+ * 用户表单类
+ * date: 2018-09-27 19:01:30
  * 
  * @author Liuweiyao
  * @version 1.0
  */
-public class User implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8581953310313209902L;
+public class UserForm implements Serializable{
 
-	/**
-	 * id
-	 */
+	private static final long serialVersionUID = 2540995087926723249L;
+
+	@ApiModelProperty(value="用户id")
 	private Long id;
 	
-	/**
-	 * 姓名
-	 */
+	@ApiModelProperty(value="姓名",required=true)
 	private String username;
 	
-	/**
-	 * 年龄
-	 */
+	@ApiModelProperty(value="年龄",required=true)
 	private Integer age;
-	
 
 	public Long getId(){
 		return id;
