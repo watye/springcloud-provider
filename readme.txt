@@ -55,3 +55,9 @@ v2.02 添加客户端调用例子(本例子仅作为开发参考：在同一项�
 3）注入接口调用
 @Autowired
 private UserWebService userWebService;
+
+v2.03 构架重构，抽象基础crud操作
+基础crud操作只需要继承CurdMapper,业务接口继承CurdService
+
+v2.04 改用logback-spring.xml配置日志
+具体说明查看logback-spring.xml文件注释

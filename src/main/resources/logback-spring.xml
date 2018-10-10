@@ -24,7 +24,7 @@
             <!-- 日志归档 -->
             <fileNamePattern>logs/${PROJECT_NAME}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>100MB</maxFileSize>
+                <maxFileSize>500MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
             <!--日志文件保留天数-->
             <maxHistory>15</maxHistory>
@@ -37,6 +37,7 @@
         <logger name="com.talelife.myproject" level="DEBUG"/>
         <logger name="org.springframework" level="INFO"/>
         <logger name="org.mybatis" level="INFO"/>
+        <!-- 根配置，下级默认继承这个配置 -->
         <root level="INFO">
 	        <appender-ref ref="CONSOLE" />
 	    </root>
