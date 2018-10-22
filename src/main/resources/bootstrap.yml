@@ -6,9 +6,12 @@ spring:
   cloud:
     config:
       fail-fast: false
+      #开发环境使用uri配置，主要是端口问题，用nginx转发的端口
+      uri: http://config.talelife.com
+      #生产环境开启这种配置方式enabled: true
       discovery:
         service-id: springcloud-config
-        enabled: true
+        enabled: false
       profile: ${spring.profiles.active}
   profiles:
     active: dev
@@ -21,11 +24,11 @@ eureka:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 20
-    instance-id: www.talelife.com:${server.port}
+    instance-id: provider.talelife.com:${server.port}
   client:
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://www.talelife.com:8761/eureka
+      defaultZone: http://eureka.talelife.com/eureka
 ---
 spring:
   profiles: prd
