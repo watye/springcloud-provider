@@ -1,6 +1,6 @@
 package com.talelife.myproject.mapper;
 
-import com.talelife.myproject.dto.UserQuery;
+import com.talelife.framework.mapper.CrudMapper;
 import com.talelife.myproject.model.User;
 
 /**
@@ -10,5 +10,5 @@ import com.talelife.myproject.model.User;
  * @author Liuweiyao
  * @version 1.0
  */
-public interface UserMapper extends CurdMapper<User, UserQuery>{
+public interface UserMapper extends CrudMapper<User>{
 }

@@ -1,5 +1,5 @@
 package com.talelife.myproject.service;
-import com.talelife.myproject.dto.UserQuery;
+import com.talelife.framework.service.CrudService;
 import com.talelife.myproject.model.User;
 /**
  * 用户业务接口
@@ -8,5 +8,5 @@ import com.talelife.myproject.model.User;
  * @author Liuweiyao
  * @version 1.0
  */
-public interface UserService extends CurdService<User, UserQuery>{
+public interface UserService extends CrudService<User>{
 }

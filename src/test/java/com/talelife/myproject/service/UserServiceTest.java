@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.talelife.util.SpringContextHolder;
+import com.talelife.myproject.model.User;
 /**
  * 用户业务测试类
  * date: 2017-08-17 17:54:46
@@ -22,7 +22,7 @@ public class UserServiceTest{
 	
 	@Test
 	public void testFindAll(){
-		userService.findAll();
+		userService.findList(new User());
 	}
 	
 }

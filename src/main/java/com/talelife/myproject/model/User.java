@@ -1,5 +1,7 @@
 package com.talelife.myproject.model;
 import java.io.Serializable;
+ 
+import com.talelife.framework.entity.BaseEntity;
 /**
  * 用户实体类
  * date: 2017-08-17 17:54:46
@@ -7,7 +9,7 @@ import java.io.Serializable;
  * @author Liuweiyao
  * @version 1.0
  */
-public class User implements Serializable{
+public class User extends BaseEntity{
 	/**
 	 * 
 	 */

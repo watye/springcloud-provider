@@ -16,7 +16,6 @@ import com.talelife.util.Page;
 import com.talelife.util.Result;
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
@@ -35,13 +34,13 @@ public class UserController extends BaseController {
 	@ApiOperation(value = "分页查询")
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public Result<Page<User>> page(UserQuery userQuery) {
-		return Result.success(userService.findPage(userQuery));
+		return null;//Result.success(userService.findListPage(paramT, pageNumber, pageSize));
 	}
 
 	@ApiOperation(value = "查询单个")
 	@RequestMapping(value="/{id}",method = RequestMethod.GET)
 	public Result<User> getUser(@PathVariable @ApiParam(value="用户id") Long id) {
-		return Result.success(userService.findByPK(id));
+		return Result.success(userService.getById(id));
 	}
 
 	@ApiOperation(value = "新增")
@@ -49,23 +48,23 @@ public class UserController extends BaseController {
 	public Result<Object> add(UserForm userForm) {
 		User user = new User();
 		BeanUtils.copyProperties(userForm,user);
-		userService.add(user);
+		userService.save(user);
 		return Result.success();
 	}
 
 	@ApiOperation(value = "修改")
-	@RequestMapping(value="/update",method = RequestMethod.POST)
+	@RequestMapping(value="/update",method = RequestMethod.PUT)
 	public Result<Object> update(UserForm userForm) {
 		User user = new User();
 		BeanUtils.copyProperties(userForm,user);
-		userService.update(user);
+		userService.updateById(user);
 		return Result.success();
 	}
 	
 	@ApiOperation(value = "删除")
 	@RequestMapping(value="/delete/{id}",method = RequestMethod.DELETE)
 	public Result<Object> delete(@PathVariable @ApiParam(value="用户id") Long id) {
-		userService.delete(id);
+		userService.deleteById(id);
 		return Result.success();
 	}
 
