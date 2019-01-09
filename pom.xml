@@ -80,6 +80,11 @@
 			<artifactId>guava</artifactId>
 			<version>25.1-jre</version>
 		</dependency>
+		<dependency>
+		  <groupId>ma.glasnost.orika</groupId>
+		  <artifactId>orika-core</artifactId>
+		  <version>1.5.2</version>
+		</dependency>
 		<!-- swagger -->
 		<dependency>
 			<groupId>io.springfox</groupId>

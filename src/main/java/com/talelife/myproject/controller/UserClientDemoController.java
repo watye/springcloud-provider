@@ -5,9 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/*import com.talelife.myproject.feign.UserWebService;
-import com.talelife.myproject.feign.dto.UserDto;*/
-import com.talelife.util.Result;
+import com.talelife.framework.entity.ResponseEntity;
 
 /**
  * 用户客户端调用例子

@@ -1,8 +1,8 @@
-package com.talelife.util;
+package com.talelife.framework.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public final class Result<T> {
+public final class ResponseEntity<T> {
 	
 	@ApiModelProperty(value = "是否成功")
 	private boolean success = false;
@@ -16,58 +16,43 @@ public final class Result<T> {
 	@ApiModelProperty(value = "返回对象")
 	private T data;
 
-	private Result() {
+	private ResponseEntity() {
 	}
 
-	private static <T> Result<T> getInstance() {
-		return new Result<>();
+	private static <T> ResponseEntity<T> getInstance() {
+		return new ResponseEntity<>();
 	}
 
-	public static <T> Result<T> success() {
-		Result<T> rs = getInstance();
+	public static <T> ResponseEntity<T> ok() {
+		ResponseEntity<T> rs = getInstance();
 		rs.setSuccess(true);
 		return rs;
 	}
 
-	public static <T> Result<T> success(String code) {
-		Result<T> rs = getInstance();
-		rs.setSuccess(true);
-		rs.setCode(code);
-		return rs;
-	}
-
-	public static <T> Result<T> fail() {
-		Result<T> rs = getInstance();
+	public static <T> ResponseEntity<T> fail() {
+		ResponseEntity<T> rs = getInstance();
 		rs.setSuccess(false);
 		return rs;
 	}
 
-	public static <T> Result<T> fail(String code) {
-		Result<T> rs = getInstance();
+	public static <T> ResponseEntity<T> fail(String code) {
+		ResponseEntity<T> rs = getInstance();
 		rs.setSuccess(false);
 		rs.setCode(code);
 		return rs;
 	}
 
-	public static <T> Result<T> fail(String code, String msg) {
-		Result<T> rs = getInstance();
+	public static <T> ResponseEntity<T> fail(String code, String msg) {
+		ResponseEntity<T> rs = getInstance();
 		rs.setSuccess(false);
 		rs.setCode(code);
 		rs.setMessage(msg);
 		return rs;
 	}
 
-	public static <T> Result<T> success(T data) {
-		Result<T> rs = getInstance();
+	public static <T> ResponseEntity<T> ok(T data) {
+		ResponseEntity<T> rs = getInstance();
 		rs.setSuccess(true);
-		rs.setData(data);
-		return rs;
-	}
-
-	public static <T> Result<T> success(String code, T data) {
-		Result<T> rs = getInstance();
-		rs.setSuccess(true);
-		rs.setCode(code);
 		rs.setData(data);
 		return rs;
 	}

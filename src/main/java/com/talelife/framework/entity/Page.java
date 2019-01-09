@@ -1,8 +1,10 @@
-package com.talelife.util;
+package com.talelife.framework.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.github.pagehelper.PageInfo;
 
 /**
  * mybatis分页辅助类
@@ -46,9 +48,9 @@ public final class Page<E> implements Serializable{
 		super();
 	}
 	
-	public Page(com.github.pagehelper.Page<E> page) {
+	public Page(com.github.pagehelper.PageInfo<E> page) {
 		super();
-		this.data = page.getResult();
+		this.data = page.getList();
 		this.pageSize = page.getPageSize();
 		this.endRow = page.getEndRow();
 		this.pageNum = page.getPageNum();
@@ -57,6 +59,16 @@ public final class Page<E> implements Serializable{
 		this.total = page.getTotal();
 	}
 	
+	public Page(PageInfo<?> page, List<E> userList) {
+		this.data = userList;
+		this.pageSize = page.getPageSize();
+		this.endRow = page.getEndRow();
+		this.pageNum = page.getPageNum();
+		this.pages = page.getPages();
+		this.startRow = page.getStartRow();
+		this.total = page.getTotal();
+	}
+
 	public int getPageNum() {
 		return pageNum;
 	}

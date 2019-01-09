@@ -11,13 +11,15 @@ import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
+import com.talelife.framework.exception.BusinessException;
 import com.talelife.myproject.controller.BaseController;
 import com.talelife.myproject.model.User;
-import com.talelife.util.BusinessException;
 
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -25,7 +27,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @RestController
 @RequestMapping("/wechat")
 public class WechatApi extends BaseController{
-	
+	private static Logger logger = LoggerFactory.getLogger(WechatApi.class);
 	private static final String TOKEN_URL = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=%s&corpsecret=%s";
 	private static final String USER_BASE_INFO_URL = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=%s&code=%s";
 	private static final String USER_DETAIL_INFO_URL = "https://qyapi.weixin.qq.com/cgi-bin/user/get?access_token=%s&userid=%s";
@@ -64,7 +66,7 @@ public class WechatApi extends BaseController{
 
 	private static WechatUserResult getWechatUserInfo(String code) {
 		
-		logger.info("expiresTime->{}",expiresTime);
+		//logger.info("expiresTime->{}",expiresTime);
 		
 		//1、获取token：1)初次，2)token过期
 		synchronized (lock) {

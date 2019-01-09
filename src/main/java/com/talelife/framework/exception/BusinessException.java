@@ -1,4 +1,4 @@
-package com.talelife.util;
+package com.talelife.framework.exception;
 
 /**
  * 业务运行异常

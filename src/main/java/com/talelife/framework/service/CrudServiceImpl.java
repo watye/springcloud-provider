@@ -17,8 +17,8 @@ public abstract class CrudServiceImpl<T extends BaseEntity> {
 		return getDao().findList(entity);
 	}
 
-	public PageInfo<T> findListPage(T entity, int pageNumber, int pageSize) {
-		PageHelper.startPage(pageNumber, pageSize);
+	public PageInfo<T> findListPage(T entity, int pageNum, int pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
 		PageInfo<T> page = new PageInfo<T>(getDao().findList(entity));
 		return page;
 	}

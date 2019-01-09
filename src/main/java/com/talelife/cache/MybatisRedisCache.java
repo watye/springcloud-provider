@@ -12,7 +12,7 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
-import com.talelife.util.SpringContextHolder;
+import com.talelife.framework.util.SpringContextHolder;
 
 public class MybatisRedisCache implements Cache {
 

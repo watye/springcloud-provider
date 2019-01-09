@@ -1,4 +1,4 @@
-package com.talelife.util;
+package com.talelife.framework.util;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
